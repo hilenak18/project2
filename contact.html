@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Contact</title>
+  <script>
+    function validateForm() {
+      var name = document.getElementById("name").value;
+      var email = document.getElementById("email").value;
+      var message = document.getElementById("message").value;
+
+      if (name.trim() === "") {
+        alert("Please enter your name");
+        return false;
+      }
+
+      if (email.trim() === "") {
+        alert("Please enter your email");
+        return false;
+      }
+
+      if (!isValidEmail(email)) {
+        alert("Please enter a valid email address");
+        return false;
+      }
+
+      if (message.trim() === "") {
+        alert("Please enter your message");
+        return false;
+      }
+
+      return true;
+    }
+
+    function isValidEmail(email) {
+      // Regular expression for basic email validation
+      var emailRegex = /\S+@\S+\.\S+/;
+      return emailRegex.test(email);
+    }
+  </script>
+</head>
+<body>
+  <hr><hr>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <h2><b>Contact Form</b></h2>
+  <form id="contactForm" action="submit.php" onsubmit="return validateForm()" method="post">
+    <p>Name: <input type="text" id="name" name="name"></p>
+    <p>Email: <input type="text" id="email" name="email"></p>
+    <p>Message: <textarea id="message" name="message"></textarea></p>
+    <p><input type="submit" value="Submit"></p>
+  </form>
+</body>
+</html>
